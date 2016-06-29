@@ -32,8 +32,32 @@ function Claim(name, type, cost){
 }
 
 //function to determine percent covered
-function percentCovered (){
-  
+function percentCovered (claim){
+  var pCovered = -1;
+  switch (claim.visitType) {
+    case 'Optical':
+      pCovered = 0.0;
+      break;
+    case 'Specialist':
+      pCovered = 0.10;
+      break;
+    case 'Emergency':
+      pCovered = 1;
+      break;
+    case 'Primary Care':
+      pCovered = 0.50;
+      break;
+    default:
+      pCovered = 0.00;
+  }
+  return pCovered;
 }
 
+
 //function to determine amount covered
+
+function ammountCovered(claim){
+	return ( claim.visitCost * percentCovered(claim));
+}
+
+console.log(ammountCovered(new Claim('Robert Landis',"Specialist",10000)));
