@@ -60,4 +60,8 @@ function ammountCovered(claim){
 	return ( claim.visitCost * percentCovered(claim));
 }
 
-console.log(ammountCovered(new Claim('Robert Landis',"Specialist",10000)));
+
+
+	for (var i = 0; i < initialList.length; i++) {
+		console.log("Paid out $"+(initialList[i].visitCost- ammountCovered(initialList[i])) +" for "+initialList[i].patientName  );
+	}
